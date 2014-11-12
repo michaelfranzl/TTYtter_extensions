@@ -1,10 +1,25 @@
-# Embed Code Extension for TTYtter
+# TTYtter_extensions
 
-This is an extension for the excellent [TTYtter](http://www.floodgap.com/software/ttytter) Twitter client which outputs the embed code of a particular tweet, otherwise available only through a button click on Twitter.com, to be used on websites.
+This is a repository holding my own extensions to the excellent [TTYtter](http://www.floodgap.com/software/ttytter) Twitter client.
 
-## Usage
+You can include the following extensions following the instructions on the TTYtter documentation page, then restart TTYtter.
+
+
+## Embed Code
+
+File Name in this repository: `embedcode.pl`
+
+This extension can output the HTML embed code of a particular tweet, otherwise available only through a button click on Twitter.com, to be used on websites.
+
+
+### Usage
+
+Given the following twit:
 
     h9> <RT_com> PHOTO of @Philae2014 on way to #67P, #COMETLANDING expected in 30 mins https://pbs.twimg.com/media/B2P8HgTCQAAuIbB.jpg http://on.rt.com/tpz9ir
+    
+Type:
+
     **TTYtter>** \embed h9
     
 Output:
