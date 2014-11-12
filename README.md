@@ -36,13 +36,19 @@ This extension was originally hosted at https://code.google.com/p/pwntter. It wo
 Create a new MySQL database with the following command (note the UTF8 settings):
 
     CREATE DATABASE ttytter DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+    
+Next create the tables:
 
-Edit ttytter_mysql.pl with hostname, database, userid and password for your MySQL database:
+    mysql -u username -ppassword ttytter < ttytter_mysql_create_tables.sql
 
-# mysql database config.
-my $host     = "localhost";
-my $db       = "ttytter";
-my $user_id  = "mysqluserid";
-my $password = "mysqlpassword";`
+Edit `ttytter_mysql.pl` with hostname, database, userid and password for your MySQL database:
+
+    # mysql database config.
+    my $host     = "localhost";
+    my $db       = "ttytter";
+    my $user_id  = "mysqluserid";
+    my $password = "mysqlpassword";`
 
 If they are not already installed, install Perl modules DB, Date::Manip and HTML::Entities.
+
+Add ttytter_mysql to your `.ttytterrc` and restart.
