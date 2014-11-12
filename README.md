@@ -5,7 +5,7 @@ This is a repository holding my own extensions to the excellent [TTYtter](http:/
 You can include the following extensions following the instructions on the TTYtter documentation page, then restart TTYtter.
 
 
-## Embed Code
+## ttytter_embedcode
 
 File Name in this repository: `embedcode.pl`
 
@@ -26,12 +26,23 @@ Output:
 
     <blockquote class="twitter-tweet" lang="en"><p>PHOTO of @Philae2014 on way to #67P, #COMETLANDING expected in 30 mins https://pbs.twimg.com/media/B2P8HgTCQAAuIbB.jpg http://on.rt.com/tpz9ir</p>&mdash;RT_com<a href="//twitter.com/RT_com/status/532550384284602368">Wed Nov 12 15:08:00 +0000 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     
-## License
 
-Copyright (c) 2014 Michael Franzl
+## ttytter_mysql
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+This extension was originally hosted at https://code.google.com/p/pwntter. It would not call the default handlers of TTYtter, and so the interactive mode of TTYtter would not print any output. I wanted to use TTYtter in a normal way AND dump all tweets into the database. In addition, I added UTF8 support for the database. This is the reason why I modified the program and re-publish it here.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+### Usage
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Create a new MySQL database with the following command (note the UTF8 settings):
+
+    CREATE DATABASE ttytter DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+Edit ttytter_mysql.pl with hostname, database, userid and password for your MySQL database:
+
+# mysql database config.
+my $host     = "localhost";
+my $db       = "ttytter";
+my $user_id  = "mysqluserid";
+my $password = "mysqlpassword";`
+
+If they are not already installed, install Perl modules DB, Date::Manip and HTML::Entities.
