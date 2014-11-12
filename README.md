@@ -1,6 +1,6 @@
 # TTYtter_extensions
 
-This is a repository holding my own extensions to the excellent [TTYtter](http://www.floodgap.com/software/ttytter) Twitter client.
+This is a repository holding some extensions to the excellent [TTYtter](http://www.floodgap.com/software/ttytter) Twitter client.
 
 You can include the following extensions following the instructions on the TTYtter documentation page, then restart TTYtter.
 
