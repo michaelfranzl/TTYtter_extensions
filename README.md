@@ -20,7 +20,7 @@ Given the following twit:
     
 Type:
 
-    **TTYtter>** \embed h9
+    /embed h9
     
 Output:
 
