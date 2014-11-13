@@ -26,6 +26,7 @@
 use DBI;
 use Date::Manip;
 use HTML::Entities;
+use Lingua::Identify qw(:language_manipulation :language_identification);
 
 # mysql database config
 my $host     = "localhost";
@@ -47,6 +48,12 @@ sub date_format {
 }
 
 $handle = sub {
+  
+    deactivate_all_languages();
+    activate_language('en');
+    activate_language('es');
+    activate_language('de');
+    activate_language('fr');
 
     my $dbh = DBI->connect("DBI:mysql:database=$db;host=$host",
                             "$user_id", "$password",
@@ -57,6 +64,7 @@ $handle = sub {
     #tweet data
     my $id = $ref->{'id_str'};
     my $text = &descape(decode_entities($ref->{'text'}));
+    my $lang = langof({method => {smallwords => 1, ngrams2 => 1, suffixes2 => 2, prefixes2 => 1}}, $text);
     my $created_at = ParseDate($ref->{'created_at'});
     my $source = &descape($ref->{'source'});
     my $geo_lat = $ref->{geo}->{coordinates}->[0];
@@ -105,6 +113,7 @@ $handle = sub {
                 " `user_id` = ?, " .
                 " `screen_name` = ?, " .
                 " `text` = ?, " .
+                " `language` = ?, ".
                 " `created_at` = ?, " .
                 " `source` = ?, " .
                 " `user_name` = ?, " . 
@@ -115,7 +124,7 @@ $handle = sub {
 
     my $sth = $dbh->prepare($sql);
 
-    $sth->execute($id, $user_id, $screen_name, $text, $created_at, 
+    $sth->execute($id, $user_id, $screen_name, $text, $lang, $created_at, 
                 $source, $name, $geo_lat, $geo_long);             
 
     my $user_sql = "replace into `users` " .
