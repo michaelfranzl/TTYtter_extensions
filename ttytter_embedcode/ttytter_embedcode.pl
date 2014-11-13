@@ -24,3 +24,11 @@ $addaction = sub {
 
         return 0;
 };
+
+# the following should be it's own extension. It transforms \n to a real line break.
+$prepost = sub {
+  my $tweet = shift;
+  
+  $tweet =~ s/\\n/\n/sg;
+  return $tweet;
+};
